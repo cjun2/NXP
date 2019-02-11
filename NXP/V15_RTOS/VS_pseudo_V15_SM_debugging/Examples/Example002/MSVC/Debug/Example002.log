@@ -1,0 +1,11 @@
+﻿  main.c
+  supporting_functions.c
+  tasks.c
+  queue.c
+  port.c
+  heap_4.c
+  list.c
+  Generating Code...
+  LINK : E:\DropBox\Dropbox\USMI\FreeRTOS note\source-code-for-book-examples\Win32-simulator-MSVC\Debug\Example002.exe not found or not built by the last incremental link; performing full link
+  Example002.vcxproj -> E:\DropBox\Dropbox\USMI\FreeRTOS note\source-code-for-book-examples\Win32-simulator-MSVC\Debug\Example002.exe
+  Example002.vcxproj -> E:\DropBox\Dropbox\USMI\FreeRTOS note\source-code-for-book-examples\Win32-simulator-MSVC\Debug\Example002.pdb (Full PDB)

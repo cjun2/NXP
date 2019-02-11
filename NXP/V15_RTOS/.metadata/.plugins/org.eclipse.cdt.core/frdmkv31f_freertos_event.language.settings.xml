@@ -1,0 +1,1483 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+	<configuration id="com.crt.advproject.config.exe.debug.1644943012" name="Debug">
+		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
+			<provider id="com.crt.advproject.GCCBuildCommandParser">
+				<language id="org.eclipse.cdt.core.gcc">
+					<resource project-relative-path="drivers/fsl_gpio.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_smc.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_common.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="utilities/fsl_debug_console.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_ftfx_flash.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="utilities/fsl_str.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/event_groups.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="startup/startup_mkv31f51212.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/portable/port.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/stream_buffer.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="board/src/clock_config.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/tasks.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="board/src/board.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="utilities/fsl_assert.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_uart.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/portable/heap_4.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_clock.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/list.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="CMSIS/system_MKV31F51212.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="source/semihost_hardfault.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="utilities/fsl_io.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_ftfx_flexnvm.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/queue.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/FreeRTOS/timers.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="amazon-freertos/portable/fsl_tickless_systick.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="source/freertos_event.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="board/peripherals.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="utilities/fsl_log.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_lpuart.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="board/pin_mux.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_ftfx_cache.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+					<resource project-relative-path="drivers/fsl_ftfx_controller.c">
+						<entry kind="includePath" name="/${ProjName}/board">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/source">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/drivers">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/CMSIS">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/startup">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/utilities">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/FreeRTOS/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/portable">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/amazon-freertos/include">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/board/src">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="CPU_MKV31F512VLL12" value=""/>
+						<entry kind="macro" name="CPU_MKV31F512VLL12_cm4" value=""/>
+						<entry kind="macro" name="CR_INTEGER_PRINTF" value=""/>
+						<entry kind="macro" name="DEBUG" value=""/>
+						<entry kind="macro" name="FRDM_KV31F" value=""/>
+						<entry kind="macro" name="FREEDOM" value=""/>
+						<entry kind="macro" name="FSL_RTOS_FREE_RTOS" value=""/>
+						<entry kind="macro" name="SDK_DEBUGCONSOLE" value="0"/>
+						<entry kind="macro" name="__MCUXPRESSO" value=""/>
+						<entry kind="macro" name="__REDLIB__" value=""/>
+						<entry kind="macro" name="__USE_CMSIS" value=""/>
+					</resource>
+				</language>
+			</provider>
+		</extension>
+	</configuration>
+</project>

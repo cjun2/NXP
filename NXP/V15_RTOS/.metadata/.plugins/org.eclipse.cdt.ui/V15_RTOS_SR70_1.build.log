@@ -1,0 +1,38 @@
+16:37:20 **** Incremental Build of configuration Debug for project V15_RTOS_SR70_1 ****
+make -r -j8 all 
+Building file: ../source/RobotInterface.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=gnu99 -D__REDLIB__ -DCPU_MKV31F512VLL12_cm4 -DCPU_MKV31F512VLL12 -DSDK_DEBUGCONSOLE=0 -DCR_INTEGER_PRINTF -DFRDM_KV31F -DFREEDOM -DFSL_RTOS_FREE_RTOS -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I../board -I../source -I../ -I../drivers -I../CMSIS -I../startup -I../utilities -I../amazon-freertos/FreeRTOS/portable -I../amazon-freertos/portable -I../amazon-freertos/include -I../board/src -O0 -fno-common -g -Wall -c  -ffunction-sections  -fdata-sections  -ffreestanding  -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"source/RobotInterface.d" -MT"source/RobotInterface.o" -MT"source/RobotInterface.d" -o "source/RobotInterface.o" "../source/RobotInterface.c"
+../source/RobotInterface.c: In function 'UpdateCommand':
+../source/RobotInterface.c:587:12: warning: variable 'm_state' set but not used [-Wunused-but-set-variable]
+  STR_STATE m_state = m_robot->m_state;
+            ^~~~~~~
+../source/RobotInterface.c: In function 'MotionExecution':
+../source/RobotInterface.c:799:34: warning: statement with no effect [-Wunused-value]
+     m_robot->m_movPar.command[i] == MOTOR_CW_MOTION;
+../source/RobotInterface.c:806:34: warning: statement with no effect [-Wunused-value]
+     m_robot->m_movPar.command[i] == MOTOR_CCW_MOTION;
+../source/RobotInterface.c:812:34: warning: statement with no effect [-Wunused-value]
+     m_robot->m_movPar.command[i] == MOTOR_IDLE;
+../source/RobotInterface.c:818:34: warning: statement with no effect [-Wunused-value]
+   { m_robot->m_movPar.command[i] == MOTOR_IDLE;
+Finished building: ../source/RobotInterface.c
+ 
+Building target: V15_RTOS_SR70_1.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="V15_RTOS_SR70_1.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T frdmkv31f_freertos_swtimer_Debug.ld -o "V15_RTOS_SR70_1.axf"  ./utilities/fsl_assert.o ./utilities/fsl_debug_console.o ./utilities/fsl_io.o ./utilities/fsl_log.o ./utilities/fsl_str.o  ./startup/startup_mkv31f51212.o  ./source/DC_Motor.o ./source/RobotInterface.o ./source/SR70_MC.o ./source/semihost_hardfault.o  ./drivers/fsl_adc16.o ./drivers/fsl_clock.o ./drivers/fsl_common.o ./drivers/fsl_ftfx_cache.o ./drivers/fsl_ftfx_controller.o ./drivers/fsl_ftfx_flash.o ./drivers/fsl_ftfx_flexnvm.o ./drivers/fsl_ftm.o ./drivers/fsl_gpio.o ./drivers/fsl_lpuart.o ./drivers/fsl_smc.o ./drivers/fsl_uart.o  ./board/src/board.o ./board/src/clock_config.o  ./board/peripherals.o ./board/pin_mux.o  ./amazon-freertos/portable/fsl_tickless_systick.o  ./amazon-freertos/FreeRTOS/portable/heap_4.o ./amazon-freertos/FreeRTOS/portable/port.o  ./amazon-freertos/FreeRTOS/event_groups.o ./amazon-freertos/FreeRTOS/list.o ./amazon-freertos/FreeRTOS/queue.o ./amazon-freertos/FreeRTOS/stream_buffer.o ./amazon-freertos/FreeRTOS/tasks.o ./amazon-freertos/FreeRTOS/timers.o  ./CMSIS/system_MKV31F51212.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       30548 B       512 KB      5.83%
+      SRAM_UPPER:       20240 B        64 KB     30.88%
+      SRAM_LOWER:          0 GB        32 KB      0.00%
+Finished building target: V15_RTOS_SR70_1.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "V15_RTOS_SR70_1.axf"; # arm-none-eabi-objcopy -v -O binary "V15_RTOS_SR70_1.axf" "V15_RTOS_SR70_1.bin" ; # checksum -p MKV31F512xxx12 -d "V15_RTOS_SR70_1.bin";
+   text	   data	    bss	    dec	    hex	filename
+  30532	     16	  20224	  50772	   c654	V15_RTOS_SR70_1.axf
+ 
+
+16:37:21 Build Finished (took 819ms)
+

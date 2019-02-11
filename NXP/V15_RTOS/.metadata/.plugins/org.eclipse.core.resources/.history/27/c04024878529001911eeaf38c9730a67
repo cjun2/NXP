@@ -1,0 +1,664 @@
+/*
+ * RobotInterface.c
+ *
+ *  Created on: Nov 29, 2018
+ *      Author: Changhan
+ */
+
+#include "RobotInterface.h"
+
+void RobotInterface_Init(RobotInterface * m)
+{
+	for (int i=0;i<2;i++)
+	{
+		m->ADC_data[i]=0; // reading value from Joysticks 0 - 4096
+		m->sbtn[i]=0;	// reading value from Side buttons 0-1
+
+	}
+
+	m->joybtn = 0;
+	m->ADC_init = 0 ,	m->PWM_init=0 ,	m->GPIO_init=0;
+
+	// motor variables
+	m->cnt_per_turn	=	322785.3;
+	for (int i = 0;i<3;i++)
+	{
+		m->motor_counts[i] = 0;
+		m->old_motor_counts[i]=0;
+		m->Pos_PID_enable[i] = false;
+		m->error[i] = 0; m->derror[i] = 0; m->olderror[i]=0;m->Ierror[i]=0;
+		m->target[i] = 0;
+	}
+
+	ADC_init(m);
+	PWM_init(m);
+	GPIO_init(m);
+	FTMQD_init(m);
+}
+void enablePosMode(RobotInterface * m_robot, int index[3])
+{
+	for(int i=0;i<3;i++)
+	{
+		if (index [i] == 1)
+		{
+			m_robot->Pos_PID_enable[i] = true;
+		}
+	}
+}
+void disablePosMode(RobotInterface * m_robot, int index[3])
+{
+	for(int i=0;i<3;i++)
+		{
+			if (index [i] == 0)
+			{
+				m_robot->Pos_PID_enable[i] = false;
+			}
+		}
+}
+void ADC_init(RobotInterface * m)
+{
+	ADC16_GetDefaultConfig(&m->adc16ConfigStruct);
+
+#ifdef BOARD_ADC_USE_ALT_VREF
+	m->adc16ConfigStruct.referenceVoltageSource = kADC16_ReferenceVoltageSourceValt;
+#endif
+
+    ADC16_Init(DEMO_ADC16_BASE, &m->adc16ConfigStruct);
+    ADC16_EnableHardwareTrigger(DEMO_ADC16_BASE, false); /* Make sure the software trigger is used. */
+    ADC16_SetChannelMuxMode(DEMO_ADC16_BASE, kADC16_ChannelMuxB);
+    #if defined(FSL_FEATURE_ADC16_HAS_CALIBRATION) && FSL_FEATURE_ADC16_HAS_CALIBRATION
+
+
+		    if (kStatus_Success == ADC16_DoAutoCalibration(DEMO_ADC16_BASE))
+		    {
+		        //PRINTF("ADC16_DoAutoCalibration() Done.\r\n");
+		    }
+		    else
+		    {
+		        //PRINTF("ADC16_DoAutoCalibration() Failed.\r\n");
+		    }
+
+		    m->adc16ChannelConfigStruct.channelNumber = DEMO_ADC16_USER_CHANNEL;
+		    m->adc16ChannelConfigStruct.enableInterruptOnConversionCompleted = false;
+
+		    m->adc16ChannelConfigStruct2.channelNumber = DEMO_ADC16_USER_CHANNEL2;
+		    m->adc16ChannelConfigStruct2.enableInterruptOnConversionCompleted = false;
+
+		#if defined(FSL_FEATURE_ADC16_HAS_DIFF_MODE) && FSL_FEATURE_ADC16_HAS_DIFF_MODE
+		    m->adc16ChannelConfigStruct.enableDifferentialConversion = false;
+		    m->adc16ChannelConfigStruct2.enableDifferentialConversion = false;
+
+		    m->ADC_init = 1; // WHEN DONE adc INIT FLAG UP
+#endif
+		#endif
+}
+
+void ADC_read(RobotInterface * m)
+{
+	ADC16_SetChannelConfig(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP, &m->adc16ChannelConfigStruct);
+
+			while (0U == (kADC16_ChannelConversionDoneFlag &
+						  ADC16_GetChannelStatusFlags(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP)))
+			{
+			}
+			m->ADC_data[0]=ADC16_GetChannelConversionValue(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP);
+	ADC16_SetChannelConfig(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP, &m->adc16ChannelConfigStruct2);
+
+	while (0U == (kADC16_ChannelConversionDoneFlag &
+				  ADC16_GetChannelStatusFlags(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP)))
+	{
+	}
+	m->ADC_data[1]=ADC16_GetChannelConversionValue(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP);
+
+}
+
+void PWM_init(RobotInterface * m)
+{
+	/* Configure ftm params with frequency 24kHZ */
+		m->pwmLevel = kFTM_HighTrue;
+		m->ftmParam1.chnlNumber = BOARD_FTM_CHANNEL1;
+		m->ftmParam1.level = m->pwmLevel;
+		m->ftmParam1.dutyCyclePercent = 1U;
+		m->ftmParam1.firstEdgeDelayPercent = 0U;
+
+		m->ftmParam2.chnlNumber = BOARD_FTM_CHANNEL2;
+		m->ftmParam2.level = m->pwmLevel;
+		m->ftmParam2.dutyCyclePercent = 1U;
+		m->ftmParam2.firstEdgeDelayPercent = 0U;
+
+		//m->ftmParam3.chnlNumber = BOARD_FTM_CHANNEL3;
+		//m->ftmParam3.level = m->pwmLevel;
+		//m->ftmParam3.dutyCyclePercent = 1U;
+		//m->ftmParam3.firstEdgeDelayPercent = 0U;
+
+	    FTM_GetDefaultConfig(&m->ftmInfo1);
+	    FTM_GetDefaultConfig(&m->ftmInfo2);
+	    //FTM_GetDefaultConfig(&m->ftmInfo3);
+	    /* Initialize FTM module */
+
+	    FTM_Init(BOARD_FTM_BASEADDR1, &m->ftmInfo1);
+	    FTM_Init(BOARD_FTM_BASEADDR2, &m->ftmInfo2);
+	   // FTM_Init(BOARD_FTM_BASEADDR3, &m->ftmInfo3);
+
+	    FTM_SetupPwm(BOARD_FTM_BASEADDR1, &m->ftmParam1, 1U, kFTM_CenterAlignedPwm, 24000U, FTM_SOURCE_CLOCK);
+	    FTM_SetupPwm(BOARD_FTM_BASEADDR2, &m->ftmParam2, 1U, kFTM_CenterAlignedPwm, 24000U, FTM_SOURCE_CLOCK);
+	   // FTM_SetupPwm(BOARD_FTM_BASEADDR3, &m->ftmParam3, 1U, kFTM_CenterAlignedPwm, 24000U, FTM_SOURCE_CLOCK);
+
+	    FTM_StartTimer(BOARD_FTM_BASEADDR1, kFTM_SystemClock);
+	    FTM_StartTimer(BOARD_FTM_BASEADDR2, kFTM_SystemClock);
+	   // FTM_StartTimer(BOARD_FTM_BASEADDR3, kFTM_SystemClock);
+
+	    m->PWM_init =1;
+
+}
+void GPIO_init(RobotInterface * m)
+{
+	// Side buttons
+	m->sBtn_config.pinDirection = kGPIO_DigitalInput;
+	m->sBtn_config.outputLogic = 0;
+	// Joy stick button
+	m->joyBtn_config.pinDirection = kGPIO_DigitalInput;
+	m->joyBtn_config.outputLogic = 0;
+
+	// motor config
+	m->motor_drv_DI.pinDirection = kGPIO_DigitalInput;
+	m->motor_drv_DI.outputLogic = 0;
+
+	m->motor_drv_DO.pinDirection = kGPIO_DigitalOutput;
+	m->motor_drv_DO.outputLogic = 0;
+/*
+	m->M1_D1_config.pinDirection =kGPIO_DigitalOutput;
+	m->M1_D1_config.outputLogic = 0;
+
+	m->M2_D1_config.pinDirection =kGPIO_DigitalOutput;
+	m->M2_D1_config.outputLogic = 0;
+
+	m->M3_D1_config.pinDirection =kGPIO_DigitalOutput;
+	m->M3_D1_config.outputLogic = 0;*/
+
+	//M1,2,3================================================================= 01/23/2018 new update
+	GPIO_PinInit(Board_GPIO_M1_eN,Ch_GPIO_M1_eN, &m->motor_drv_DO);
+	GPIO_PinInit(Board_GPIO_M1_fault,Ch_GPIO_M1_fault, &m->motor_drv_DI);
+	GPIO_PinInit(Board_GPIO_M2_eN,Ch_GPIO_M2_eN, &m->motor_drv_DO);
+	GPIO_PinInit(Board_GPIO_M2_fault,Ch_GPIO_M2_fault, &m->motor_drv_DI);
+	//GPIO_PinInit(Board_GPIO_M3_eN,Ch_GPIO_M3_eN, &m->motor_drv_DO);
+	//GPIO_PinInit(Board_GPIO_M3_fault,Ch_GPIO_M3_fault, &m->motor_drv_DI);
+
+	// Enabling DRV8848 Motor Driver
+	GPIO_WritePinOutput(Board_GPIO_M1_eN,Ch_GPIO_M1_eN,1);
+	GPIO_WritePinOutput(Board_GPIO_M2_eN,Ch_GPIO_M2_eN,1);
+	//GPIO_WritePinOutput(Board_GPIO_M3_eN,Ch_GPIO_M3_eN,1);
+
+	// Side Buttons
+	PORT_SetPinInterruptConfig(SBTN_Port_base, SideBtn1_Pin, kPORT_InterruptFallingEdge);
+	PORT_SetPinInterruptConfig(SBTN_Port_base, SideBtn2_Pin, kPORT_InterruptFallingEdge);
+
+	GPIO_PinInit(SBTN_Board_base, SideBtn1_Pin, &m->sBtn_config);
+	GPIO_PinInit(SBTN_Board_base, SideBtn2_Pin, &m->sBtn_config);
+
+	// joystick select
+	GPIO_PinInit(JOYBTN_Board_base, JoyBtn_Pin, &m->joyBtn_config);
+
+}
+void FTMQD_init(RobotInterface * m)
+{
+	/* Motor 1 QD Encoder ******************************************************
+	 *
+
+
+	**************************************************************************/
+	FTM_GetDefaultConfig(&m->ftmInfo);
+    m->ftmInfo.prescale = kFTM_Prescale_Divide_1;
+
+    /* Motor 1 QD Encoder******************************************************/
+    FTM_Init(M1_FTM_BASEADDR, &m->ftmInfo);
+    /* Set the modulo values for Quad Decoder. */
+    FTM_SetQuadDecoderModuloValue(M1_FTM_BASEADDR, 0U, QUAD_DECODER_MODULO);
+    /* Enable the Quad Decoder mode. */
+    m->phaseParamsConfigStruct.enablePhaseFilter = true;
+    m->phaseParamsConfigStruct.phaseFilterVal = 16;
+    m->phaseParamsConfigStruct.phasePolarity = kFTM_QuadPhaseNormal;
+    FTM_SetupQuadDecode(M1_FTM_BASEADDR, &m->phaseParamsConfigStruct, /* Phase A. */
+                        &m->phaseParamsConfigStruct,                    /* Phase B. */
+                        kFTM_QuadPhaseEncode);
+    FTM_ClearQuadDecoderCounterValue(M1_FTM_BASEADDR);
+
+    /* Motor 2 QD Encoder ******************************************************/
+	FTM_Init(M2_FTM_BASEADDR, &m->ftmInfo);
+	/* Set the modulo values for Quad Decoder. */
+	FTM_SetQuadDecoderModuloValue(M2_FTM_BASEADDR, 0U, QUAD_DECODER_MODULO);
+	/* Enable the Quad Decoder mode. */
+	m->phaseParamsConfigStruct.enablePhaseFilter = true;
+	m->phaseParamsConfigStruct.phaseFilterVal = 16;
+	m->phaseParamsConfigStruct.phasePolarity = kFTM_QuadPhaseNormal;
+	FTM_SetupQuadDecode(M2_FTM_BASEADDR, &m->phaseParamsConfigStruct, /* Phase A. */
+						&m->phaseParamsConfigStruct,                    /* Phase B. */
+						kFTM_QuadPhaseEncode);
+	FTM_ClearQuadDecoderCounterValue(M2_FTM_BASEADDR);
+
+}
+void ReadSideBtns(RobotInterface * m)
+{
+	m->sbtn[0]=GPIO_ReadPinInput(SBTN_Board_base, SideBtn1_Pin);
+	m->sbtn[1]=GPIO_ReadPinInput(SBTN_Board_base, SideBtn2_Pin);
+}
+void ReadJoyBtn(RobotInterface * m)
+{
+	m->joybtn=GPIO_ReadPinInput(JOYBTN_Board_base, JoyBtn_Pin);
+}
+
+void ReadQDCountsPractical(RobotInterface * m)
+{
+	m->old_motor_counts[0]=m->motor_counts[0];
+	m->old_motor_counts[1]=m->motor_counts[1];
+	int16_t m1_read =(int16_t)FTM_GetQuadDecoderCounterValue(M1_FTM_BASEADDR);
+	FTM_ClearQuadDecoderCounterValue(M1_FTM_BASEADDR);
+	int16_t m2_read =(int16_t)FTM_GetQuadDecoderCounterValue(M2_FTM_BASEADDR);
+	FTM_ClearQuadDecoderCounterValue(M2_FTM_BASEADDR);
+	m->motor_counts[0]=m->motor_counts[0]+m1_read;
+	m->motor_counts[1]=m->motor_counts[1]+m2_read;
+
+}
+void UpdateRPM(RobotInterface * m,uint32_t delT)
+{
+	for (int i=0;i<1;i++)
+	{
+		float dX = (float)(m->motor_counts[0]-m->old_motor_counts[0]);
+		m->motor_rpm[i] = (dX/m->cnt_per_turn)*60*(delT/1000);
+	}
+}
+
+int32_t GetMotorABSCounter(RobotInterface * m, int motor_index)
+{
+	// index should be 1,2
+
+	if (motor_index ==1)
+	{
+		//return m->motor_cnt1;
+		return m->motor_counts[0];
+	}
+	if (motor_index ==2)
+	{
+		//return m->motor_cnt2;
+		return m->motor_counts[1];
+	}
+	if (motor_index ==3)
+	{
+		//return m->motor_cnt3;
+		return m->motor_counts[2];
+	}
+	return 0;
+}
+void UpdateState(RobotInterface * m)
+{
+	ADC_read(m);
+	ReadSideBtns(m);
+	//ReadJoyBtn(m);
+	//ReadQDCounts(m);
+}
+void SetTarget(RobotInterface * m_robot, int32_t target[3])
+{
+	for (int i=0;i<3;i++){
+		m_robot->target[i] = target[i];
+	}
+
+}
+void MotorPathPlanning(RobotInterface * m_robot)
+{
+	//m->ADC_data[0] m->sbtn[0]==1 188-2200 0-4096
+	// int32_t abscount = GetMotorABSCounter(m_robot,i+1);
+
+	int32_t target[3];
+	//motor1
+	int32_t abscount1 = GetMotorABSCounter(m_robot,1);
+
+		if(m_robot->ADC_data[0] >= 2200)
+			{
+				if (abscount1+8000 >322785*3)
+				{
+					target [0]=322785*3;
+				}
+				else
+				{
+				target [0] = abscount1 +80000;}
+			}
+		if(m_robot->ADC_data[0] < 1800)
+			{
+				if (abscount1-8000 <-322785*3)
+				{
+					target [0]=-322785*3;
+				}
+				else
+				{
+				target [0] = abscount1 -80000;}
+
+			}
+		if(m_robot->ADC_data[0] >=(1800) && m_robot->ADC_data[0] <(2200))
+			{
+				target [0] = abscount1;
+			}
+
+
+
+	// motor 2
+	int32_t abscount2 = GetMotorABSCounter(m_robot,2);
+
+		if (m_robot->ADC_data[1] >= 2200)
+		{
+			if (abscount2+8000 >322785*2)
+			{
+				target [1]=322785*2;
+			}
+			else
+			{
+			target [1] = abscount2 +80000;}
+
+		}
+		if (m_robot->ADC_data[1] < 1800)
+		{
+			if (abscount2-8000 <-322785*2)
+				{
+					target [1]=-322785*2;
+				}
+				else
+				{
+					target [1] = abscount2 - 80000;}
+
+		}
+		if(m_robot->ADC_data[1] >=(1800) && m_robot->ADC_data[1] <(2200))
+		{
+		target [1]=abscount2;
+		}
+
+
+	// motor 3
+		if(m_robot->sbtn[0]==1 )
+				{
+
+				target [1]=1;
+
+				}
+			if(m_robot->sbtn[1]==1 )
+				{
+
+					target [2] = -1;
+
+				}
+			if(m_robot->sbtn[0]==0 && m_robot->sbtn[1]==0  )
+				{
+					target [2] = 0;
+				}
+
+
+
+	SetTarget(m_robot,target);
+
+}
+void MotorLifeCycleRunning(RobotInterface * m_robot)
+{
+	//m->ADC_data[0] m->sbtn[0]==1 188-2200 0-4096
+	// int32_t abscount = GetMotorABSCounter(m_robot,i+1);
+	int32_t target[3];
+
+	//motor1
+	int32_t abscount1 = GetMotorABSCounter(m_robot,1);
+
+
+
+				if (abscount1+1000 >322785*3)
+				{
+					target [0]=-322785*3;
+				}
+
+/*
+				if (abscount1-1000 <-322785*3)
+				{
+					target [0]=322785*3;
+				}
+*/
+
+
+
+
+	// motor 2
+	int32_t abscount2 = GetMotorABSCounter(m_robot,2);
+
+
+			if (abscount2+1000 >322785*2)
+			{
+				target [1]=-322785*2;
+			}
+/*
+			if (abscount2-1000 <-322785*2)
+			{
+				target [1]=+322785*2;
+			}
+*/
+
+
+
+	// motor 3
+	target[2]=0;
+
+	SetTarget(m_robot,target);
+
+}
+void MotorPositionControl(RobotInterface * m_robot, uint32_t delT)
+{
+	int Sigs[3];
+	int dir[3];
+	for (int i=0;i<2;i++)
+	{
+		int32_t abscount = GetMotorABSCounter(m_robot,i+1);
+		m_robot->error[i] =m_robot->target[i] - abscount ;
+		m_robot->derror[i] = (m_robot->error[i]-m_robot->olderror[i])/(delT/1000);
+		m_robot->Ierror[i] = m_robot->Ierror[i] + m_robot->error[i]*(delT/1000);
+		m_robot->olderror[i] = m_robot->error[i];
+		Sigs[i]= abs((int)(0.0008*(double)m_robot->error[i] + 0.005*(double)m_robot->derror[i]+0.000*(double)m_robot->Ierror[i]));
+		if (Sigs[i] > 99U){Sigs[i]=99;}
+		if (m_robot->error[i] > 0){dir[i] = 1;
+		}else{dir[i] = -1;}
+
+	}
+
+	if (m_robot->target[2] == 1) {dir[2]=1;Sigs[2] =99U;}
+	if (m_robot->target[2] == -1) {dir[2]=-1;Sigs[2] =99U;}
+	if (m_robot->target[2] == 0) {dir[2]=0;Sigs[2] =0U;}
+
+
+	MotorCommand ( m_robot, dir, Sigs);
+
+}
+void MotorCommand(RobotInterface * m,int dir[3], int Sigs[3])
+{
+				// M1, M2 is driven by ADC M3 will be driven by Btn command
+
+	// DRV8848
+					// M1
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1, 0U);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1b, 0U);
+					if ( dir[0] == 1 ) // CW
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1, kFTM_CenterAlignedPwm, (Sigs[0]));
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1b, kFTM_CenterAlignedPwm, 0U);
+					}
+					if ( dir[0] == -1 ) // CCW
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1, kFTM_CenterAlignedPwm, 0U);
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1b, kFTM_CenterAlignedPwm, (Sigs[0]));
+					}
+					if ( dir[0] == 0 ) // BREAK
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1, kFTM_CenterAlignedPwm, 0U);
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1b, kFTM_CenterAlignedPwm, 0U);
+					}
+					FTM_SetSoftwareTrigger(BOARD_FTM_BASEADDR1, true);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1, m->pwmLevel);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR1, BOARD_FTM_CHANNEL1b, m->pwmLevel);
+
+					//M2
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2, 0U);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2b, 0U);
+					if ( dir[1] ==1 ) // CW
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2, kFTM_CenterAlignedPwm, (Sigs[1]));
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2b, kFTM_CenterAlignedPwm, 0U);
+					}
+					if ( dir[1] ==-1 ) // CCW
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2, kFTM_CenterAlignedPwm, 0U);
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2b, kFTM_CenterAlignedPwm, (Sigs[1]));
+					}
+					if ( dir[1] ==0 ) // BREAK
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2, kFTM_CenterAlignedPwm, 0U);
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2b, kFTM_CenterAlignedPwm, 0U);
+					}
+					FTM_SetSoftwareTrigger(BOARD_FTM_BASEADDR2, true);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2, m->pwmLevel);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR2, BOARD_FTM_CHANNEL2b, m->pwmLevel);
+
+					//M3
+					/*
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3, 0U);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3b, 0U);
+					if ( dir[2] == 1) // CW
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3, kFTM_CenterAlignedPwm, (Sigs[2]));
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3b, kFTM_CenterAlignedPwm, 0U);
+					}
+					if ( dir[2] == -1 ) // CCW
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3, kFTM_CenterAlignedPwm, 0U);
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3b, kFTM_CenterAlignedPwm, (Sigs[2]));
+					}
+					if ( dir[2] == 0 ) // BREAK
+					{
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3, kFTM_CenterAlignedPwm, 0U);
+					FTM_UpdatePwmDutycycle(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3b, kFTM_CenterAlignedPwm,0U);
+					}
+					FTM_SetSoftwareTrigger(BOARD_FTM_BASEADDR3, true);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3, m->pwmLevel);
+					FTM_UpdateChnlEdgeLevelSelect(BOARD_FTM_BASEADDR3, BOARD_FTM_CHANNEL3b, m->pwmLevel);*/
+
+}
+
+void ProcessCommand(RobotInterface * m_robot)
+{
+	short command = m_robot->m_state.command;
+	STR_STATE m_state = m_robot->m_state;
+
+
+	switch(command){
+		case ROBOT_MCIOFF:	switch(m_state.status){
+								case ROBOT_MCIOFF:	m_state.statusTxt = _T("MCI OFF");									return;
+								case ROBOT_OFF:		m_state.status = ROBOT_MCIOFF;
+													m_state.statusTxt = _T("Stop MCI");									return;
+								case ROBOT_STOP:	m_state.status  --;
+													m_state.statusTxt = _T("Stop MCI");									return;
+								case ROBOT_READY:	m_state.status = ROBOT_STOP;
+													m_state.statusTxt = _T("Stop MCI");
+													mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));				return;
+								case ROBOT_MOVE:	m_state.status = ROBOT_STOP;
+													m_state.statusTxt = _T("Stop MCI");
+													mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));				return;
+								case ROBOT_HOME:	m_state.status = ROBOT_STOP;
+													m_state.statusTxt = _T("Stop MCI");
+													//mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));
+																														return;
+								default:			m_state.status  --;
+													m_state.statusTxt = _T("Stop MCI");									return;
+							}
+		case ROBOT_OFF:		switch(m_state.status){
+								case ROBOT_MCIOFF:	m_state.status = ROBOT_OFF;
+													m_state.statusTxt = _T("Start MCI");								return;
+								case ROBOT_OFF:		m_state.statusTxt = _T("Power OFF");								return;
+								case ROBOT_STOP:	m_state.status = ROBOT_OFF;
+													m_state.statusTxt = _T("Powering OFF");								return;
+								case ROBOT_READY:	m_state.status = ROBOT_OFF;
+													m_state.statusTxt = _T("Powering OFF");
+													mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));				return;
+								case ROBOT_MOVE:	m_state.status = ROBOT_OFF;
+													m_state.statusTxt = _T("Powering OFF");
+													mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));				return;
+								case ROBOT_HOME:	m_state.status = ROBOT_OFF;
+													m_state.statusTxt = _T("Powering OFF");
+													//mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));
+																														return;
+								default:			m_state.status = ROBOT_OFF;
+													m_state.statusTxt = _T("Powering OFF");								return;
+							}
+		case ROBOT_STOP:	switch(m_state.status){
+								case ROBOT_MCIOFF:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("MCI OFF");									return;
+								case ROBOT_OFF:		mciError(mciErrClear(0, d_nAXES, c_AXES),_T("mciErrClear"));
+													m_state.status++;
+													m_state.statusTxt = _T("Starting");									return;
+								case ROBOT_STOP:	m_state.statusTxt = _T("Sys Stopped");								return;
+								case ROBOT_READY:	m_state.status = ROBOT_STOP;
+													m_state.statusTxt = _T("Stopping");
+													mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));				return;
+								case ROBOT_MOVE:	m_state.status = ROBOT_STOP;
+													m_state.statusTxt = _T("Stopping");
+													mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));				return;
+								case ROBOT_HOME:	m_state.status = ROBOT_STOP;
+													m_state.statusTxt = _T("Stopping");
+													// mciError(mciSoftEmergStop(0),_T("mciSoftEmergStop"));
+																														return;
+								default:			m_state.status++;
+													m_state.statusTxt = _T("Starting");									return;
+							}
+		case ROBOT_READY:	switch(m_state.status){
+								case ROBOT_MCIOFF:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("MCI OFF");									return;
+								case ROBOT_OFF:		m_state.command = m_state.status;
+													m_state.statusTxt = _T("Power OFF");								return;
+								case ROBOT_STOP:	m_state.status = ROBOT_READY;
+													m_state.statusTxt = _T("Get Ready");
+													mciError(mciSoftEmergStopRelease(0),_T("mciSoftEmergStopRelease"));
+													mciError(mciErrClear(0, d_nAXES, c_AXES),_T("mciErrClear"));		return;
+								case ROBOT_READY:	m_state.statusTxt = _T("System Ready");								return;
+								case ROBOT_MOVE:	mciError(mciPathStop(0, d_nAXES, c_AXES, 1),_T("mciPathStop"));
+													mciError(mciPathUnstop	(0, d_nAXES, c_AXES),_T("mciPathUnstop"));
+													m_state.status = ROBOT_READY;
+													m_state.statusTxt = _T("Stop Move");								return;
+								case ROBOT_HOME:	// Homing stop processed internally by the 2 homing types
+													m_state.status = ROBOT_READY;
+													m_state.statusTxt = _T("Stop Homing");								return;
+								default:			LogLine(_T("Unhandled ProcessCommand ROBOT_READY"));				return;
+							}
+		case ROBOT_MOVE:	switch(m_state.status){
+								case ROBOT_MCIOFF:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("MCI OFF");									return;
+								case ROBOT_OFF:		m_state.command = m_state.status;
+													m_state.statusTxt = _T("Power OFF");								return;
+								case ROBOT_STOP:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("Sys Stopped");								return;
+								case ROBOT_READY:	if(!Move(m_movPar)){
+														m_state.command = ROBOT_READY;
+														m_state.statusTxt = _T("Motion Failed");						return;
+													}
+													m_state.status = ROBOT_MOVE;
+													m_state.statusTxt = _T("Start Motion");								return;
+								case ROBOT_MOVE:	m_state.statusTxt = _T("In Motion");								return;
+								case ROBOT_HOME:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("Homing");									return;
+								default:			LogLine(_T("Unhandled Command ROBOT_MOVE!\n"));				return;
+							}
+		case ROBOT_HOME:	switch(m_state.status){
+								case ROBOT_MCIOFF:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("MCI OFF");									return;
+								case ROBOT_OFF:		m_state.command = m_state.status;
+													m_state.statusTxt = _T("Power OFF");								return;
+								case ROBOT_STOP:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("Sys Stopped");								return;
+								case ROBOT_READY:	m_state.status = ROBOT_HOME;
+													m_state.statusTxt = _T("Homing");
+													HomeAxes_StartThread();													return;
+								case ROBOT_MOVE:	m_state.command = m_state.status;
+													m_state.statusTxt = _T("In Motion");								return;
+								case ROBOT_HOME:	m_state.statusTxt = _T("Homing");									return;
+								default:			LogLine(_T("Unhandled Command ROBOT_MOVE!\n"));				return;
+							}
+	}
+}

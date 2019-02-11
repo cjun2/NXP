@@ -1,0 +1,25 @@
+11:43:06 **** Incremental Build of configuration Debug for project frdmkv31f_freertos_event ****
+make -r -j8 all 
+Building file: ../source/freertos_event.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=gnu99 -D__REDLIB__ -DCPU_MKV31F512VLL12_cm4 -DCPU_MKV31F512VLL12 -DSDK_DEBUGCONSOLE=0 -DCR_INTEGER_PRINTF -DFRDM_KV31F -DFREEDOM -DFSL_RTOS_FREE_RTOS -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I../board -I../source -I../ -I../drivers -I../CMSIS -I../startup -I../utilities -I../amazon-freertos/FreeRTOS/portable -I../amazon-freertos/portable -I../amazon-freertos/include -I../board/src -O0 -fno-common -g -Wall -c  -ffunction-sections  -fdata-sections  -ffreestanding  -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"source/freertos_event.d" -MT"source/freertos_event.o" -MT"source/freertos_event.d" -o "source/freertos_event.o" "../source/freertos_event.c"
+Finished building: ../source/freertos_event.c
+ 
+Building target: frdmkv31f_freertos_event.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="frdmkv31f_freertos_event.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T frdmkv31f_freertos_event_Debug.ld -o "frdmkv31f_freertos_event.axf"  ./utilities/fsl_assert.o ./utilities/fsl_debug_console.o ./utilities/fsl_io.o ./utilities/fsl_log.o ./utilities/fsl_str.o  ./startup/startup_mkv31f51212.o  ./source/freertos_event.o ./source/semihost_hardfault.o  ./drivers/fsl_clock.o ./drivers/fsl_common.o ./drivers/fsl_ftfx_cache.o ./drivers/fsl_ftfx_controller.o ./drivers/fsl_ftfx_flash.o ./drivers/fsl_ftfx_flexnvm.o ./drivers/fsl_gpio.o ./drivers/fsl_lpuart.o ./drivers/fsl_smc.o ./drivers/fsl_uart.o  ./board/src/board.o ./board/src/clock_config.o  ./board/peripherals.o ./board/pin_mux.o  ./amazon-freertos/portable/fsl_tickless_systick.o  ./amazon-freertos/FreeRTOS/portable/heap_4.o ./amazon-freertos/FreeRTOS/portable/port.o  ./amazon-freertos/FreeRTOS/event_groups.o ./amazon-freertos/FreeRTOS/list.o ./amazon-freertos/FreeRTOS/queue.o ./amazon-freertos/FreeRTOS/stream_buffer.o ./amazon-freertos/FreeRTOS/tasks.o ./amazon-freertos/FreeRTOS/timers.o  ./CMSIS/system_MKV31F51212.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       26516 B       512 KB      5.06%
+      SRAM_UPPER:       19100 B        64 KB     29.14%
+      SRAM_LOWER:          0 GB        32 KB      0.00%
+Finished building target: frdmkv31f_freertos_event.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "frdmkv31f_freertos_event.axf"; # arm-none-eabi-objcopy -v -O binary "frdmkv31f_freertos_event.axf" "frdmkv31f_freertos_event.bin" ; # checksum -p MKV31F512xxx12 -d "frdmkv31f_freertos_event.bin";
+   text	   data	    bss	    dec	    hex	filename
+  26500	     16	  19084	  45600	   b220	frdmkv31f_freertos_event.axf
+ 
+
+11:43:07 Build Finished (took 741ms)
+

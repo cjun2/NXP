@@ -1,0 +1,106 @@
+/*
+ * Copyright (c) 2019, USMI LLC.
+ * Author : Changhan Jun
+ * SR70 Main Control
+ */
+
+/* Standard includes. */
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+// RTOS
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+
+// Board
+#include "fsl_device_registers.h"
+#include "fsl_debug_console.h"
+#include "board.h"
+#include "fsl_common.h"
+#include "pin_mux.h"
+#include "clock_config.h"
+
+// Robot
+#include "RobotInterface.h"
+
+
+
+
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+RobotInterface SR70; // robot object
+
+// RTOS Tasks
+static void SystemUpdateTask(void *pvParameters);
+static void ProcessingTask(void *pvParameters);
+
+
+/* The software timer period. */
+#define SW_TIMER_PERIOD_MS (1000 / portTICK_PERIOD_MS)
+
+/* The callback function. */
+static void SwTimerCallback(TimerHandle_t xTimer);
+
+/*******************************************************************************
+ * Code
+ ******************************************************************************/
+/*!
+ * @brief Main function
+ */
+int main(void)
+{
+	// Robot SR70 init
+	RobotInterface_Init(&SR70);
+
+    TimerHandle_t SwTimerHandle = NULL;
+
+    /* Init board hardware. */
+    BOARD_InitPins();
+    BOARD_BootClockRUN();
+    BOARD_InitDebugConsole();
+    SystemCoreClockUpdate();
+    /* Create the software timer. */
+    SwTimerHandle = xTimerCreate("SwTimer",          /* Text name. */
+                                 SW_TIMER_PERIOD_MS, /* Timer period. */
+                                 pdTRUE,             /* Enable auto reload. */
+                                 0,                  /* ID is not used. */
+                                 SwTimerCallback);   /* The callback function. */
+    /*******************************************************************************
+     * Timer
+     ******************************************************************************/
+    /*******************************************************************************
+     * Tasks
+     ******************************************************************************/
+    xTaskCreate(SystemUpdateTask, "SystemUpdateTask", configMINIMAL_STACK_SIZE + 10, NULL, 1, NULL);
+    /*******************************************************************************
+     * Queues
+     ******************************************************************************/
+    xTimerStart(SwTimerHandle, 0);
+    /* Start scheduling. */
+    vTaskStartScheduler();
+    for (;;)
+        ;
+}
+
+/*!
+ * @brief Software timer callback.
+ */
+static void SwTimerCallback(TimerHandle_t xTimer)
+{
+    PRINTF("Tick.\r\n");
+}
+static void SystemUpdateTask(void *pvParameters)
+{
+	UpdateState(&SR70);
+}
+static void ProcessingTask(void *pvParameters)
+{
+	ReadQDCountsPractical(&SR70); // sampling time should be fast enough that it updates counts < 2^8 in delT
+	MotorPathPlanning(&SR70);
+	//MotorPositionControl(&SR70,delT);
+}
+
+

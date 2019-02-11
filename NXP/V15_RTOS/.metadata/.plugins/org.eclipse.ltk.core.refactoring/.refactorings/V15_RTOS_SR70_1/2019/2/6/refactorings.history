@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;V15_RTOS_SR70_1/source/freertos_swtimer.c&apos; to &apos;SR70_MC.c&apos;" description="Rename resource &apos;freertos_swtimer.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="source/freertos_swtimer.c" name="SR70_MC.c" stamp="1549379384437" updateReferences="true"/>
+</session>
